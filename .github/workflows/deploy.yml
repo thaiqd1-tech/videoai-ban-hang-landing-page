@@ -22,6 +22,8 @@ jobs:
             mkdir -p ${{ secrets.WORK_DIR }}
             cd ${{ secrets.WORK_DIR }}
             if [ ! -d ".git" ]; then
+              echo "Cleaning directory for fresh clone..."
+              rm -rf ..?* .[!.]* * 
               git clone https://github.com/thaiqd1-tech/videoai-ban-hang-landing-page.git .
             else
               git pull origin main
