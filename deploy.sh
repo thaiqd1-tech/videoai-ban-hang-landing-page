@@ -24,9 +24,9 @@ echo "⏳ Waiting for the application to start..."
 sleep 10
 
 # Check if the application is running
-if curl -f http://localhost:3002 > /dev/null 2>&1; then
+if curl -f http://localhost:3006 > /dev/null 2>&1; then
     echo "✅ Application is running successfully!"
-    echo "🌐 Frontend is available at: http://localhost:3002"
+    echo "🌐 Frontend is available at: http://localhost:3006"
 else
     echo "❌ Application failed to start. Checking logs..."
     docker-compose logs frontend

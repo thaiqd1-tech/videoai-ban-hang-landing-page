@@ -7,14 +7,9 @@ import { AndromedaSystem } from './components/sections/AndromedaSystem'
 import { WhoIsThisFor } from './components/sections/WhoIsThisFor'
 import { ResultsGallery } from './components/sections/ResultsGallery'
 import { SecretWeaponSection } from './components/sections/SecretWeaponSection'
-import { ComparisonSection } from './components/sections/ComparisonSection'
-import { StepsSection } from './components/sections/StepsSection'
 import { ExpertStory } from './components/sections/ExpertStory'
-import { TestimonialsGrid } from './components/sections/TestimonialsGrid'
-import { CurriculumSection } from './components/sections/CurriculumSection'
-import { BonusSection } from './components/sections/BonusSection'
+import { IncomeVision } from './components/sections/IncomeVision'
 import { PricingSection } from './components/sections/PricingSection'
-import { GuaranteeSection } from './components/sections/GuaranteeSection'
 import { Footer } from './components/layout/Footer'
 import { StickyCTA } from './components/layout/StickyCTA'
 import { Support } from './components/sections/Support'
@@ -27,17 +22,12 @@ function HomePage() {
             <Hero />
             <ProblemSection />
             <AndromedaSystem />
-            <ResultsGallery />
             <ExpertStory />
+            <ResultsGallery />
+            <IncomeVision />
             {/* <WhoIsThisFor /> */}
             <SecretWeaponSection />
-            <ComparisonSection />
-            <StepsSection />
-            <CurriculumSection />
-            <BonusSection />
             <PricingSection />
-            <TestimonialsGrid />
-            <GuaranteeSection />
             <Support />
             {/* Final CTA Strip */}
             <section className="bg-primary py-12 text-center group transition-colors" >
@@ -59,15 +49,12 @@ function HomePage() {
     )
 }
 
-import PaymentSuccessPage from './pages/PaymentSuccessPage'
-
 function App() {
     return (
         <Router>
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/payment" element={<PaymentPage />} />
-                {/* <Route path="/payment-success" element={<PaymentSuccessPage />} /> */}
             </Routes>
         </Router>
     )

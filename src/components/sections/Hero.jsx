@@ -15,7 +15,7 @@ export const Hero = () => {
             <div className="absolute top-0 left-0 w-full bg-red-600 py-3 flex items-center justify-center gap-4 text-white z-50">
                 <AlertTriangle size={18} className="animate-pulse" />
                 <span className="font-black text-xs md:text-sm tracking-widest uppercase">
-                    Cảnh báo khẩn cấp cho người muốn làm chủ công nghệ n8n
+                    Cảnh báo khẩn cấp cho người muốn làm chủ video AI
                 </span>
                 <AlertTriangle size={18} className="animate-pulse" />
             </div>
@@ -37,16 +37,16 @@ export const Hero = () => {
                 </div>
 
                 <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-8 leading-[1.2] tracking-tight text-white uppercase">
-                    <span className="text-red-600 text-glow-red italic block transform -skew-x-6 uppercase font-montserrat text-2xl md:text-6xl lg:text-7xl">90% người học n8n đang</span>
+                    <span className="text-red-600 text-glow-red italic block transform -skew-x-6 uppercase font-montserrat text-2xl md:text-6xl lg:text-7xl">90% người làm video bán hàng đang</span>
                     <br />
-                    lãng phí thời gian của họ.
+                    Làm video chưa hiệu quả
                 </h1>
 
                 <div className="max-w-3xl mx-auto mb-12">
                     <p className="text-gray-400 text-base md:text-lg font-medium leading-relaxed">
-                        Chi phí tăng cao, workflow không hiệu quả, dữ liệu sai lệch
+                        Chi phí sản xuất video tốn hàng trăm triệu
                         <br />
-                        Đừng lướt xuống nếu bạn vẫn muốn mất 6-8h mỗi ngày cho những công việc vô ích.
+                        Nhưng lại "KHÔNG RA ĐƠN", chất lượng video "KÉM"
                     </p>
                 </div>
 
@@ -54,8 +54,15 @@ export const Hero = () => {
                     {/* Member Pill */}
                     <div className="flex items-center gap-4 bg-white/5 border border-white/10 pl-2 pr-6 py-2 rounded-full backdrop-blur-md">
                         <div className="flex -space-x-2">
-                            {[1, 2, 3, 4].map(i => (
-                                <div key={i} className="w-10 h-10 rounded-full border-2 border-black bg-gray-800 overflow-hidden" />
+                            {[
+                                "https://randomuser.me/api/portraits/men/32.jpg",
+                                "https://randomuser.me/api/portraits/women/44.jpg",
+                                "https://randomuser.me/api/portraits/men/67.jpg",
+                                "https://randomuser.me/api/portraits/women/68.jpg"
+                            ].map((url, i) => (
+                                <div key={i} className="w-10 h-10 rounded-full border-2 border-black bg-gray-800 overflow-hidden">
+                                    <img src={url} alt={`User ${i}`} className="w-full h-full object-cover" />
+                                </div>
                             ))}
                         </div>
                         <span className="text-sm md:text-base font-bold text-gray-300">
@@ -77,13 +84,14 @@ export const Hero = () => {
 
             {/* Floating Badges with Refined Styling */}
             <div className="hidden lg:block">
-                <FloatingBadge icon={<AlertTriangle size={14} />} text="Workflow rác" top="15%" left="5%" style={{ y: y2 }} />
-                <FloatingBadge icon={<Users size={14} />} text="Khách ảo" top="25%" right="10%" style={{ y: y1 }} />
-                <FloatingBadge icon={<Lock size={14} />} text="Bế tắc" top="45%" right="5%" style={{ y: y3 }} />
-                <FloatingBadge icon={<CheckCircle2 size={14} />} text="Lãng phí API" bottom="25%" right="15%" style={{ y: y2 }} />
-                <FloatingBadge icon={<BarChart3 size={14} />} text="Token cao" bottom="20%" left="15%" style={{ y: y1 }} />
-                <FloatingBadge icon={<TrendingUp size={14} />} text="Chi phí tăng" top="60%" left="10%" style={{ y: y3 }} />
-                <FloatingBadge icon={<Lock size={14} />} text="Thiếu tư duy" bottom="50%" left="5%" style={{ y: y2 }} />
+                <FloatingBadge icon={<AlertTriangle size={14} />} text="Lãng phí thời gian" top="15%" left="5%" style={{ y: y2 }} />
+                <FloatingBadge icon={<Users size={14} />} text="Nhân vật không đồng nhất" top="25%" right="10%" style={{ y: y1 }} />
+                <FloatingBadge icon={<Lock size={14} />} text="Tiền thuê mẫu cao" top="45%" right="5%" style={{ y: y3 }} />
+                <FloatingBadge icon={<CheckCircle2 size={14} />} text="Video chất lượng thấp" bottom="25%" right="15%" style={{ y: y2 }} />
+                <FloatingBadge icon={<BarChart3 size={14} />} text="Bí ý tưởng" bottom="20%" left="15%" style={{ y: y1 }} />
+                <FloatingBadge icon={<TrendingUp size={14} />} text="Chất lượng kém" top="60%" left="10%" style={{ y: y3 }} />
+                <FloatingBadge icon={<Lock size={14} />} text="Chuyển đổi kém" bottom="50%" left="5%" style={{ y: y2 }} />
+                <FloatingBadge icon={<Lock size={14} />} text="Chi phí cao" bottom="40%" right="10%" style={{ y: y1 }} />
             </div>
         </section>
     )

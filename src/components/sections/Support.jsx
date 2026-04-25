@@ -71,24 +71,21 @@ export const Support = () => {
             lỗi workflow, AI trả kết quả sai, không kết nối được API, không tối ưu
             chi phí…
           </p>
-        </div>
 
-        {/* CTA */}
-        <div className="mt-16 flex flex-col items-center gap-6">
-          <a
-            href="https://zalo.me/g/tvrdrk774"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full max-w-md bg-blue-500 text-black font-black py-6 rounded-2xl text-xl md:text-2xl shadow-[0_0_40px_rgba(59,130,246,0.4)] hover:scale-105 transition-all flex items-center justify-center gap-4"
-          >
-            CHAT ZALO NGAY
-            <ArrowRight />
-          </a>
+          <div className="mb-6 rounded-2xl overflow-hidden border border-white/10 shadow-xl">
+            <img src="/images/zalo.jpg" alt="Zalo Support Group" className="w-full h-auto object-cover" />
+          </div>
 
-          <p className="text-xs text-gray-600 uppercase tracking-wider">
+          <p className="text-center text-xs text-gray-600 uppercase tracking-wider">
             *Chỉ hỗ trợ học viên đã đăng ký
           </p>
         </div>
+
+
+
+
+
+
       </motion.div>
 
       {/* FLOATING BADGES */}
