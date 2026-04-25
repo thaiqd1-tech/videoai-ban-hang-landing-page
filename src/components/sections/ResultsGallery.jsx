@@ -6,7 +6,7 @@ import { SectionTitle } from '../shared'
 const categories = [
     { name: "Thời trang", video: "/videos/Thời trang 1.mp4", isLandscape: false },
     { name: "Mỹ phẩm", video: "/videos/Mỹ phẩm 1.mp4", isLandscape: true },
-    { name: "Bất động sản", video: "/videos/Điện ảnh 1.mp4", isLandscape: false },
+    { name: "Điện ảnh", video: "/videos/Điện ảnh 1.mp4", isLandscape: false },
     { name: "Sức khỏe", video: "/videos/Sức khoẻ 1.mp4", isLandscape: false },
     { name: "Du lịch", video: "/videos/Du lịch 1.mp4", isLandscape: true }
 ]

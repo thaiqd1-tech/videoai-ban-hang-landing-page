@@ -52,15 +52,18 @@ export const PricingSection = () => {
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white">
-                  CHỈ CÒN{' '}
+                <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white ">
+                  CHỈ CÒN
+                  <span className="line-through text-red-500 text-glow-red text-2xl md:text-4xl block mt-4 opacity-80">
+                    4.860.000đ
+                  </span>
                   <span className="text-secondary text-glow-yellow text-6xl md:text-9xl block mt-2">
-                    399.000đ
+                    486.000đ
                   </span>
                 </h3>
                 <div className="bg-white/5 py-2 px-6 rounded-full inline-block">
                   <p className="text-gray-400 font-bold uppercase tracking-widest text-[10px] md:text-xs">
-                    Giá gốc <span className="line-through">1.899.000đ</span> – <span className="text-secondary">DUY NHẤT TRONG HÔM NAY</span>
+                    <span className="text-secondary">DUY NHẤT TRONG HÔM NAY</span>
                   </p>
                 </div>
               </div>
@@ -74,8 +77,6 @@ export const PricingSection = () => {
               </a>
 
               <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center gap-6 pt-4">
-                <Feature icon={<Gift />} text="3 Tháng cập nhật" />
-                <Feature icon={<ShieldCheck />} text="Hỗ trợ trọn đời" />
                 <Feature icon={<Zap />} text={`Tăng giá sau: ${formatTime(timeLeft)}`} isRed />
               </div>
             </motion.div>
@@ -89,7 +90,7 @@ export const PricingSection = () => {
 /* ================= SUB COMPONENTS ================= */
 
 const Feature = ({ icon, text, isRed }) => (
-  <div className={`flex items-center gap-2 ${isRed ? 'text-primary' : 'text-gray-400'} font-bold text-xs`}>
+  <div className={`flex items-center gap-3 ${isRed ? 'text-primary text-glow-red text-lg md:text-xl' : 'text-gray-400 text-xs'} font-black uppercase tracking-wider`}>
     <div className={isRed ? 'animate-pulse' : ''}>{icon}</div>
     <span>{text}</span>
   </div>

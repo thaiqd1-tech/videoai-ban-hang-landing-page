@@ -33,13 +33,13 @@ export const Hero = () => {
                 {/* Urgent Badge */}
                 <div className="inline-flex items-center gap-3 bg-yellow-500/10 border-2 border-yellow-500/50 text-yellow-500 px-6 py-2.5 rounded-2xl text-xs md:text-sm font-black uppercase tracking-wider mb-10 glow-yellow-badge">
                     <AlertTriangle size={20} />
-                    KẾT NỐI 2 CÔNG NGHỆ MẠNH MẼ NHẤT: AI + AUTOMATION
+                    Đừng để bị công nghệ bỏ lại phía sau
                 </div>
 
                 <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-8 leading-[1.2] tracking-tight text-white uppercase">
-                    <span className="text-red-600 text-glow-red italic block transform -skew-x-6 uppercase font-montserrat text-2xl md:text-6xl lg:text-7xl">90% người làm video bán hàng đang</span>
+                    <span className="text-red-600 text-glow-red italic block transform -skew-x-6 uppercase font-montserrat text-2xl md:text-6xl lg:text-7xl">90% người làm video</span>
                     <br />
-                    Làm video chưa hiệu quả
+                    chưa biết cách làm video AI hiệu quả
                 </h1>
 
                 <div className="max-w-3xl mx-auto mb-12">
@@ -55,10 +55,10 @@ export const Hero = () => {
                     <div className="flex items-center gap-4 bg-white/5 border border-white/10 pl-2 pr-6 py-2 rounded-full backdrop-blur-md">
                         <div className="flex -space-x-2">
                             {[
-                                "https://randomuser.me/api/portraits/men/32.jpg",
-                                "https://randomuser.me/api/portraits/women/44.jpg",
-                                "https://randomuser.me/api/portraits/men/67.jpg",
-                                "https://randomuser.me/api/portraits/women/68.jpg"
+                                "https://bizweb.dktcdn.net/100/175/849/files/chup-anh-phong-cach-cho-nam-gioi-trong-studio-nghe-thuat-o-ha-noi-03.jpg?v=1595935877427",
+                                "https://tiemchupanh.com/wp-content/uploads/2021/11/5-6.jpg",
+                                "https://bizweb.dktcdn.net/100/175/849/files/chup-anh-profile-cho-doanh-nhan-o-dau-dep-nhat-ha-noi-02.jpg?v=1572436588703",
+                                "https://png.pngtree.com/thumb_back/fw800/background/20220313/pngtree-women-s-new-year-greeting-portrait-on-a-white-background-image_1057544.jpg"
                             ].map((url, i) => (
                                 <div key={i} className="w-10 h-10 rounded-full border-2 border-black bg-gray-800 overflow-hidden">
                                     <img src={url} alt={`User ${i}`} className="w-full h-full object-cover" />

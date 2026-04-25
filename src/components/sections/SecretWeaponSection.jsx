@@ -55,7 +55,7 @@ const weapons = [
     }
 ]
 
-const TIMER_DURATION = 7000 // 7 seconds
+const TIMER_DURATION = 8000 // 8 seconds
 
 export const SecretWeaponSection = () => {
     const [activeIndex, setActiveIndex] = useState(0)
@@ -68,7 +68,7 @@ export const SecretWeaponSection = () => {
     }
 
     useEffect(() => {
-        const interval = 100 // update progress every 100ms
+        const interval = 100 
         const step = (interval / TIMER_DURATION) * 100
 
         progressRef.current = setInterval(() => {
@@ -92,118 +92,83 @@ export const SecretWeaponSection = () => {
     return (
         <section className="py-24 relative overflow-hidden bg-black">
             {/* Background Decorations */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[200px]" />
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[150px]" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[200px]" />
 
-            <div className="max-w-7xl mx-auto px-4 relative z-10">
+            <div className="max-w-4xl mx-auto px-4 relative z-10">
                 <SectionTitle
                     subtitle="Lộ trình làm chủ"
                     title="Nội dung"
                     highlight="Chương trình học"
                 />
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-12">
-                    {/* Left Side: Options List */}
-                    <div className="lg:col-span-5 space-y-4">
-                        {weapons.map((item, index) => (
-                            <div
-                                key={item.id}
-                                onClick={() => handleSelect(index)}
-                                className={`group cursor-pointer relative p-6 rounded-2xl transition-all duration-300 border ${activeIndex === index
-                                    ? 'bg-white/[0.05] border-white/20 shadow-2xl'
-                                    : 'bg-transparent border-white/5 hover:bg-white/[0.02] hover:border-white/10'
-                                    }`}
-                            >
-                                <div className="flex items-center gap-4">
-                                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${activeIndex === index ? 'bg-primary text-white' : 'bg-white/5 text-gray-500'
-                                        }`}>
-                                        {item.icon}
-                                    </div>
-                                    <div className="flex-1">
-                                        <h3 className={`font-bold transition-colors ${activeIndex === index ? 'text-white' : 'text-gray-400 group-hover:text-gray-300'
-                                            }`}>
-                                            {index + 1}. {item.title}
-                                        </h3>
-                                    </div>
-                                    <ChevronRight
-                                        className={`transition-transform duration-300 ${activeIndex === index ? 'rotate-90 text-primary' : 'text-gray-600'
-                                            }`}
-                                        size={18}
-                                    />
+                <div className="space-y-6 mt-16">
+                    {weapons.map((item, index) => (
+                        <div
+                            key={item.id}
+                            onClick={() => handleSelect(index)}
+                            className={`group cursor-pointer relative p-6 md:p-8 rounded-[32px] transition-all duration-500 border ${activeIndex === index
+                                ? 'bg-white/[0.05] border-white/20 shadow-2xl scale-[1.02]'
+                                : 'bg-transparent border-white/5 hover:bg-white/[0.02] hover:border-white/10'
+                                }`}
+                        >
+                            <div className="flex items-center gap-6">
+                                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-xl ${activeIndex === index ? 'bg-primary text-white scale-110 rotate-3' : 'bg-white/5 text-gray-500'
+                                    }`}>
+                                    {item.icon}
                                 </div>
+                                <div className="flex-1">
+                                    <span className="text-secondary text-[10px] font-black uppercase tracking-[0.2em] mb-1 block opacity-60">Chương 0{index + 1}</span>
+                                    <h3 className={`text-lg md:text-xl font-black transition-colors leading-tight ${activeIndex === index ? 'text-white' : 'text-gray-400 group-hover:text-gray-300'
+                                        }`}>
+                                        {item.title}
+                                    </h3>
+                                </div>
+                                <div className={`w-8 h-8 rounded-full border border-white/10 flex items-center justify-center transition-all duration-500 ${activeIndex === index ? 'rotate-90 bg-primary border-primary text-white' : 'text-gray-600'
+                                    }`}>
+                                    <ChevronRight size={16} />
+                                </div>
+                            </div>
 
-                                {/* Active Content & Progress Bar */}
-                                <AnimatePresence>
-                                    {activeIndex === index && (
-                                        <motion.div
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: 'auto', opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            className="overflow-hidden"
-                                        >
-                                            <p className="text-gray-500 text-sm mt-4 leading-relaxed pl-14">
+                            <AnimatePresence>
+                                {activeIndex === index && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: 'auto', opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        transition={{ duration: 0.5, ease: "circOut" }}
+                                        className="overflow-hidden"
+                                    >
+                                        <div className="pt-8 space-y-8">
+                                            <p className="text-gray-400 text-base md:text-lg leading-relaxed">
                                                 {item.desc}
                                             </p>
-                                            {/* Progress Bar Container */}
-                                            <div className="mt-6 h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                                            
+                                            {/* Image integrated inside the option */}
+                                            <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-black/40 aspect-video group/img">
+                                                <img
+                                                    src={item.image}
+                                                    alt={item.title}
+                                                    className="w-full h-full object-contain"
+                                                    onError={(e) => { e.target.style.display = 'none' }}
+                                                />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                                            </div>
+
+                                            {/* Progress Bar */}
+                                            <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
                                                 <motion.div
                                                     className="h-full bg-primary"
-                                                    style={{ width: `${progress}%` }}
+                                                    initial={{ width: 0 }}
+                                                    animate={{ width: `${progress}%` }}
+                                                    transition={{ duration: 0.1, ease: "linear" }}
                                                 />
                                             </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Right Side: Image Display */}
-                    <div className="lg:col-span-7 sticky top-24 mt-40">
-                        <div className="relative w-full h-[200px] md:h-[300px] lg:h-[400px] rounded-[32px] overflow-hidden border border-white/10 bg-[#0A0A0A] shadow-2xl">
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={activeIndex}
-                                    initial={{ opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
-                                    animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-                                    exit={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
-                                    transition={{ duration: 0.6, ease: "easeOut" }}
-                                    className="absolute inset-0"
-                                >
-                                    {/* Placeholder Overlay */}
-                                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-black to-[#111] z-0">
-                                        <div className="text-center opacity-20">
-                                            <Monitor size={80} className="mx-auto mb-4 text-white" />
-                                            <p className="text-white font-bold uppercase tracking-widest text-xs">Preview Image</p>
                                         </div>
-                                    </div>
-
-                                    <img
-                                        src={weapons[activeIndex].image}
-                                        alt={weapons[activeIndex].title}
-                                        className="w-full h-full object-contain relative z-10"
-                                        onError={(e) => { e.target.style.display = 'none' }}
-                                    />
-
-                                    {/* Decorative Overlay */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-20" />
-
-                                    {/* Content Overlay */}
-                                    <div className="absolute bottom-0 left-0 right-0 p-10 z-30">
-                                        <motion.div
-                                            initial={{ y: 20, opacity: 0 }}
-                                            animate={{ y: 0, opacity: 1 }}
-                                            transition={{ delay: 0.3 }}
-                                        >
-                                        </motion.div>
-                                    </div>
-                                </motion.div>
+                                    </motion.div>
+                                )}
                             </AnimatePresence>
                         </div>
-
-                        {/* Floating decorative badge */}
-                        <div className="absolute -top-6 -right-6 w-24 h-24 bg-primary/10 rounded-full blur-2xl z-0" />
-                    </div>
+                    ))}
                 </div>
             </div>
         </section>

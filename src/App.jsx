@@ -7,6 +7,7 @@ import { AndromedaSystem } from './components/sections/AndromedaSystem'
 import { WhoIsThisFor } from './components/sections/WhoIsThisFor'
 import { ResultsGallery } from './components/sections/ResultsGallery'
 import { SecretWeaponSection } from './components/sections/SecretWeaponSection'
+import { FeedbackSection } from './components/sections/FeedbackSection'
 import { ExpertStory } from './components/sections/ExpertStory'
 import { IncomeVision } from './components/sections/IncomeVision'
 import { PricingSection } from './components/sections/PricingSection'
@@ -22,10 +23,11 @@ function HomePage() {
             <Hero />
             <ProblemSection />
             <AndromedaSystem />
+            <IncomeVision />
             <ExpertStory />
             <ResultsGallery />
-            <IncomeVision />
             {/* <WhoIsThisFor /> */}
+            <FeedbackSection />
             <SecretWeaponSection />
             <PricingSection />
             <Support />

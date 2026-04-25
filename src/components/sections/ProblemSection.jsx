@@ -27,8 +27,8 @@ export const ProblemSection = () => {
                         cá nhân kinh doanh tự do,<br className="hidden md:block" />
                         Nhiều người đổ lỗi cho AI "kém thông minh", quy trình "phức tạp", hay<br className="hidden md:block" />
                         mẫu video AI nhiều "rác"...<br className="hidden md:block" />
-                        Nhưng sự thật là yếu tố then chốt làm cho video AI hiệu quả là <span className="text-secondary font-bold">"TƯ<br className="hidden md:block" />
-                            DUY THIẾT KẾ"</span>.
+                        Nhưng sự thật là yếu tố then chốt làm cho video AI hiệu quả là <span className="text-secondary font-bold">
+                            <br className="hidden md:block" />" TƯ DUY THIẾT KẾ "</span>.
                     </p>
                 </div>
 
