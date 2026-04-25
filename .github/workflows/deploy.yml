@@ -19,7 +19,12 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            mkdir -p ${{ secrets.WORK_DIR }}
             cd ${{ secrets.WORK_DIR }}
-            git pull origin main
+            if [ ! -d ".git" ]; then
+              git clone https://github.com/thaiqd1-tech/videoai-ban-hang-landing-page.git .
+            else
+              git pull origin main
+            fi
             chmod +x deploy.sh
             ./deploy.sh
