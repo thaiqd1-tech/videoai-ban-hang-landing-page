@@ -36,10 +36,9 @@ export const Hero = ({ onOpenPayment }) => {
                     Đừng để bị công nghệ bỏ lại phía sau
                 </div>
 
-                <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-8 leading-[1.2] tracking-tight text-white uppercase">
-                    <span className="text-red-600 text-glow-red italic block transform -skew-x-6 uppercase font-montserrat text-2xl md:text-6xl lg:text-7xl">90% người làm video</span>
-                    <br />
-                    chưa biết cách làm video AI hiệu quả
+                <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-8 leading-tight md:leading-[1.1] tracking-tight text-white uppercase">
+                    <span className="text-red-600 text-glow-red italic block transform -skew-x-6 uppercase font-montserrat text-2xl md:text-6xl lg:text-7xl mb-2 md:mb-4">90% người làm video</span>
+                    chưa biết cách làm <br className='hidden md:block' /> <span className="text-green-500 text-glow-green">video AI hiệu quả</span>
                 </h1>
 
                 <div className="max-w-3xl mx-auto mb-12">

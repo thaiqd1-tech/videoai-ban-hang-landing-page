@@ -76,8 +76,8 @@ export const PricingSection = ({ onOpenPayment }) => {
                 <ChevronRight />
               </button>
 
-              <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center gap-6 pt-4">
-                <Feature icon={<Zap />} text={`Tăng giá sau: ${formatTime(timeLeft)}`} isRed />
+              <div className="flex justify-center w-full pt-4">
+                <Feature icon={<Zap size={20} />} text={`Tăng giá sau: ${formatTime(timeLeft)}`} isRed />
               </div>
             </motion.div>
           </motion.div>
@@ -90,8 +90,8 @@ export const PricingSection = ({ onOpenPayment }) => {
 /* ================= SUB COMPONENTS ================= */
 
 const Feature = ({ icon, text, isRed }) => (
-  <div className={`flex items-center gap-3 ${isRed ? 'text-primary text-glow-red text-lg md:text-xl' : 'text-gray-400 text-xs'} font-black uppercase tracking-wider`}>
+  <div className={`flex items-center gap-3 ${isRed ? 'text-primary text-glow-red text-sm md:text-xl' : 'text-gray-400 text-xs'} font-black uppercase tracking-wider`}>
     <div className={isRed ? 'animate-pulse' : ''}>{icon}</div>
-    <span>{text}</span>
+    <span className="whitespace-nowrap">{text}</span>
   </div>
 )

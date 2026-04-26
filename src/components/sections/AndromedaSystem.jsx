@@ -35,12 +35,12 @@ export const AndromedaSystem = () => {
     })
 
     return (
-        <section className="py-24 bg-black relative overflow-hidden">
+        <section className="py-16 md:py-24 bg-black relative overflow-hidden">
             <div className="max-w-full relative z-10 text-center">
                 <motion.h3
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    className="flex flex-col items-center justify-center gap-2 md:gap-4 mb-16 uppercase px-4"
+                    className="flex flex-col items-center justify-center gap-2 md:gap-4 mb-10 md:mb-16 uppercase px-4"
                 >
                     <span className="text-4xl md:text-6xl lg:text-7xl font-black text-primary text-glow-red italic tracking-tight">Chỉ sau 3 ngày !!!</span>
                     <span className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tight">Từ ăn lông ở lỗ đến cỗ máy sản xuất video AI</span>

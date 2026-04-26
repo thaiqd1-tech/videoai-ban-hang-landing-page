@@ -62,9 +62,9 @@ export const FeedbackSection = () => {
     }
 
     return (
-        <section className="py-24 bg-[#050505] relative overflow-hidden">
+        <section className="py-16 md:py-24 bg-[#050505] relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 relative z-10">
-                <div className="text-center mb-16">
+                <div className="text-center mb-10 md:mb-16">
                     <motion.h2 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +72,7 @@ export const FeedbackSection = () => {
                     >
                         Học viên nói gì về <span className="text-secondary italic">Superb AI</span>
                     </motion.h2>
-                    <p className="text-gray-500 font-medium tracking-widest uppercase text-sm">Kết quả thực tế từ những người đã trải nghiệm</p>
+                    <p className="text-gray-500 font-medium tracking-widest uppercase text-[10px] md:text-sm">Kết quả thực tế từ những người đã trải nghiệm</p>
                 </div>
 
                 <div className="relative group px-4 md:px-0">
@@ -92,8 +92,8 @@ export const FeedbackSection = () => {
                     </button>
 
                     {/* Gradient Overlays */}
-                    <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#050505] to-transparent z-20 pointer-events-none" />
-                    <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#050505] to-transparent z-20 pointer-events-none" />
+                    <div className="absolute left-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-r from-[#050505] to-transparent z-20 pointer-events-none" />
+                    <div className="absolute right-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-l from-[#050505] to-transparent z-20 pointer-events-none" />
 
                     <div 
                         ref={scrollRef}
@@ -103,9 +103,9 @@ export const FeedbackSection = () => {
                         {feedbacks.map((fb, i) => (
                             <motion.div
                                 key={i}
-                                className="min-w-[85%] md:min-w-[calc(33.333%-16px)] snap-start bg-white/5 border border-white/10 p-8 rounded-[40px] relative group hover:bg-white/[0.08] transition-all duration-500"
+                                className="min-w-[85%] md:min-w-[calc(33.333%-16px)] snap-start bg-white/5 border border-white/10 p-6 md:p-8 rounded-[32px] md:rounded-[40px] relative group hover:bg-white/[0.08] transition-all duration-500"
                             >
-                                <Quote className="absolute top-6 right-8 text-secondary/10 w-16 h-16" />
+                                <Quote className="absolute top-4 right-6 md:top-6 md:right-8 text-secondary/10 w-12 h-12 md:w-16 md:h-16" />
                                 
                                 <div className="flex items-center gap-4 mb-6">
                                     <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-secondary/30">
@@ -123,7 +123,7 @@ export const FeedbackSection = () => {
                                     ))}
                                 </div>
 
-                                <p className="text-gray-400 leading-relaxed italic text-lg md:text-xl">
+                                <p className="text-gray-400 leading-relaxed italic text-base md:text-xl">
                                     "{fb.content}"
                                 </p>
                             </motion.div>
