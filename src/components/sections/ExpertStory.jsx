@@ -4,7 +4,7 @@ import { CheckCircle2, TrendingUp, Users, BookOpen, Star } from 'lucide-react'
 
 export const ExpertStory = () => {
     return (
-        <section className="py-24 bg-black relative overflow-hidden">
+        <section id="expert" className="py-24 bg-black relative overflow-hidden">
             {/* Background decorative elements */}
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_50%,rgba(239,68,68,0.05),transparent_50%)]" />
 

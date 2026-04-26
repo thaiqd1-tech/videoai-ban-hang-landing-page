@@ -35,7 +35,7 @@ export const AndromedaSystem = () => {
     })
 
     return (
-        <section className="py-16 md:py-24 bg-black relative overflow-hidden">
+        <section id="system" className="py-16 md:py-24 bg-black relative overflow-hidden">
             <div className="max-w-full relative z-10 text-center">
                 <motion.h3
                     initial={{ opacity: 0, y: 20 }}

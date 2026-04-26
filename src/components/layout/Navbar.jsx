@@ -2,11 +2,18 @@ import React from 'react'
 
 export const Navbar = ({ onOpenPayment }) => (
     <nav className="glass-nav py-4 px-6 flex justify-between items-center bg-black/50 sticky top-0 z-50">
-        <div className="text-2xl font-black text-secondary italic tracking-tighter">AI Automation<span className="text-white">.PRO</span></div>
-        <div className="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest text-gray-400">
-            <a href="#" className="hover:text-secondary transition-colors">Về chúng tôi</a>
-            <a href="#" className="hover:text-secondary transition-colors">Kết quả</a>
-            <a href="#" className="hover:text-secondary transition-colors">Nội dung</a>
+        <div className="flex items-center gap-2">
+            <div className="text-sm md:text-lg font-black tracking-tighter uppercase">
+                <span className="text-white">Học làm video </span>
+                <span className="text-secondary italic">AI 2026</span>
+            </div>
+        </div>
+        <div className="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">
+            <a href="#system" className="hover:text-secondary transition-colors">Hệ thống</a>
+            <a href="#expert" className="hover:text-secondary transition-colors">Chuyên gia</a>
+            <a href="#results" className="hover:text-secondary transition-colors">Kết quả</a>
+            <a href="#content" className="hover:text-secondary transition-colors">Lộ trình</a>
+            <a href="#support" className="hover:text-secondary transition-colors">Tư vấn</a>
         </div>
     <button 
         onClick={onOpenPayment}

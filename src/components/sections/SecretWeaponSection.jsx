@@ -94,7 +94,7 @@ export const SecretWeaponSection = () => {
     }
 
     return (
-        <section className="py-24 relative overflow-hidden bg-black">
+        <section id="content" className="py-24 relative overflow-hidden bg-black">
             {/* Background Decorations */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[200px]" />
 

@@ -32,7 +32,7 @@ export const Support = () => {
     }
 
     return (
-        <section className="py-24 bg-black relative overflow-hidden border-t border-white/5">
+        <section id="support" className="py-24 bg-black relative overflow-hidden border-t border-white/5">
             {/* Background Decor */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[120px] -z-10" />
 
