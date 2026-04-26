@@ -152,6 +152,7 @@ export const SecretWeaponSection = () => {
                                                 <img
                                                     src={item.image}
                                                     alt={item.title}
+                                                    loading="lazy"
                                                     className="w-full h-full object-contain"
                                                     onError={(e) => { e.target.style.display = 'none' }}
                                                 />

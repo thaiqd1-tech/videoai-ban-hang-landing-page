@@ -9,30 +9,84 @@ const videoList = [
     { src: '/videos/Điện ảnh 1.mp4', aspect: 'aspect-[9/16]' },
 ]
 
+const LazyVideo = ({ src, aspect }) => {
+    const [isInView, setIsInView] = React.useState(false)
+    const videoRef = React.useRef(null)
+
+    React.useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsInView(true)
+                    observer.unobserve(entry.target)
+                }
+            },
+            { threshold: 0.1, rootMargin: '100px' }
+        )
+
+        if (videoRef.current) observer.observe(videoRef.current)
+        return () => observer.disconnect()
+    }, [])
+
+    return (
+        <div 
+            ref={videoRef}
+            className={`h-[400px] md:h-[500px] ${aspect} rounded-2xl border border-white/20 bg-gray-900 overflow-hidden shadow-2xl relative`}
+        >
+            {isInView ? (
+                <video 
+                    src={src}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-full object-cover"
+                />
+            ) : (
+                <div className="w-full h-full bg-gray-900 animate-pulse flex items-center justify-center">
+                    <div className="w-10 h-10 border-2 border-white/10 rounded-full border-t-secondary animate-spin" />
+                </div>
+            )}
+            <div className="absolute inset-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.5)] pointer-events-none" />
+        </div>
+    )
+}
+
 export const AndromedaSystem = () => {
     const x = useMotionValue(0)
     const [isPaused, setIsPaused] = React.useState(false)
     const containerRef = React.useRef(null)
+    const [isMobile, setIsMobile] = React.useState(false)
+
+    React.useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768)
+        checkMobile()
+        window.addEventListener('resize', checkMobile)
+        return () => window.removeEventListener('resize', checkMobile)
+    }, [])
 
     // Speed of the scroll (pixels per frame)
     const baseVelocity = -1 
 
     useAnimationFrame((t, delta) => {
         if (!isPaused) {
-            let moveBy = baseVelocity * (delta / 16) // Normalize by 60fps
+            let moveBy = baseVelocity * (delta / 16)
             x.set(x.get() + moveBy)
 
-            // Loop logic: If moved more than half the width (since we duplicated items), reset to 0
             if (containerRef.current) {
-                const halfWidth = containerRef.current.scrollWidth / 3
-                if (x.get() <= -halfWidth) {
+                const multiplier = isMobile ? 2 : 3
+                const partWidth = containerRef.current.scrollWidth / multiplier
+                if (x.get() <= -partWidth) {
                     x.set(0)
                 } else if (x.get() > 0) {
-                    x.set(-halfWidth)
+                    x.set(-partWidth)
                 }
             }
         }
     })
+
+    const displayList = isMobile ? [...videoList, ...videoList] : [...videoList, ...videoList, ...videoList]
 
     return (
         <section id="system" className="py-16 md:py-24 bg-black relative overflow-hidden">
@@ -46,9 +100,7 @@ export const AndromedaSystem = () => {
                     <span className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tight">Từ ăn lông ở lỗ đến cỗ máy sản xuất video AI</span>
                 </motion.h3>
 
-                {/* Auto-scrolling Video Slider */}
                 <div className="relative py-10 overflow-hidden">
-                    {/* Gradient Fades */}
                     <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black to-transparent z-20 pointer-events-none" />
                     <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black to-transparent z-20 pointer-events-none" />
 
@@ -62,30 +114,13 @@ export const AndromedaSystem = () => {
                         onDragStart={() => setIsPaused(true)}
                         onDragEnd={() => setIsPaused(false)}
                     >
-                        {/* Triple the list to ensure seamless looping during drags */}
-                        {[...videoList, ...videoList, ...videoList].map((video, i) => (
-                            <div 
-                                key={i} 
-                                className={`h-[400px] md:h-[500px] ${video.aspect} rounded-2xl border border-white/20 bg-gray-900 overflow-hidden shadow-2xl relative`}
-                            >
-                                <video 
-                                    src={video.src}
-                                    autoPlay
-                                    muted
-                                    loop
-                                    playsInline
-                                    preload="metadata"
-                                    className="w-full h-full object-cover"
-                                />
-                                {/* Soft Inner Shadow */}
-                                <div className="absolute inset-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.5)] pointer-events-none" />
-                            </div>
+                        {displayList.map((video, i) => (
+                            <LazyVideo key={i} src={video.src} aspect={video.aspect} />
                         ))}
                     </motion.div>
                 </div>
             </div>
 
-            {/* Background Glows */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/5 rounded-full blur-[150px] -z-10" />
         </section>
     )
