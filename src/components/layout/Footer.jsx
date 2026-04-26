@@ -9,9 +9,10 @@ export const Footer = () => (
             <div className="flex flex-wrap justify-center gap-6 md:gap-12 mb-10 text-base text-gray-400 font-bold uppercase tracking-widest px-4">
             </div>
 
-            <div className="flex items-center justify-center gap-2 text-gray-700 text-[10px] uppercase font-bold tracking-[0.3em]">
-                <ShieldCheck size={12} />
-                Secure Payments & Verified Content
+            <div className="space-y-3 text-gray-400 text-sm md:text-base font-medium mt-12 max-w-2xl mx-auto px-4">
+                <p className="text-white font-black uppercase tracking-wider text-lg">Công ty TNHH Giải pháp và Dịch vụ Phần mềm Superb AI</p>
+                <p className="opacity-70">Địa chỉ: 2/2 Ngõ 180 Hoàng Quốc Việt, phường Nghĩa Đô, Hà Nội.</p>
+                <p className="text-secondary font-black text-xl tracking-tighter">Hotline: 0854240999</p>
             </div>
         </div>
     </footer>

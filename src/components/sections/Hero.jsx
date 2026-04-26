@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { AlertTriangle, ArrowRight, TrendingDown, Users, Lock, CheckCircle2, BarChart3, TrendingUp } from 'lucide-react'
 import { FloatingBadge } from '../shared'
 
-export const Hero = () => {
+export const Hero = ({ onOpenPayment }) => {
     const { scrollY } = useScroll()
     const y1 = useTransform(scrollY, [0, 500], [0, -100])
     const y2 = useTransform(scrollY, [0, 500], [0, -200])
@@ -73,12 +73,12 @@ export const Hero = () => {
                     <p className="text-[10px] md:text-xs text-gray-600 italic font-bold tracking-wider uppercase opacity-60">
                         *Đọc kỹ trước khi quyết định. Chúng tôi không nhận học viên thiếu quyết tâm.
                     </p>
-                    <a
-                        href="/payment"
+                    <button
+                        onClick={onOpenPayment}
                         className="w-full max-w-md bg-secondary text-black font-black py-6 rounded-2xl text-xl md:text-2xl shadow-[0_0_50px_rgba(250,204,21,0.3)] hover:scale-105 transition-all flex items-center justify-center gap-4"
                     >
                         ĐĂNG KÝ NGAY
-                    </a>
+                    </button>
                 </div>
             </motion.div>
 

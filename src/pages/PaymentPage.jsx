@@ -38,7 +38,9 @@ const PaymentPage = () => {
       if (result.success) {
         setCourses(result.data)
         if (result.data.length > 0) {
-          setSelectedCourse(result.data[0])
+          // Lọc khóa học UGC (giá 486k) để khớp với landing page
+          const targetCourse = result.data.find(c => c.course_code === 'UGC')
+          setSelectedCourse(targetCourse || result.data[0])
         }
       }
     } catch (error) {

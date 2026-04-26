@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { ChevronRight } from 'lucide-react'
 
 const phoneImages = [
     '/images/phone1.jpg',
@@ -7,7 +8,7 @@ const phoneImages = [
     '/images/phone3.jpg',
 ]
 
-export const IncomeVision = () => {
+export const IncomeVision = ({ onOpenPayment }) => {
     // Duplicate images for seamless loop
     const allImages = [...phoneImages, ...phoneImages, ...phoneImages]
 
@@ -38,18 +39,15 @@ export const IncomeVision = () => {
                     <motion.div
                         className="flex gap-6 w-max"
                         animate={{
-                            x: [0, -1144], // This depends on image width + gap
+                            x: ["0%", "-50%"], 
                         }}
                         transition={{
-                            x: {
-                                repeat: Infinity,
-                                repeatType: "loop",
-                                duration: 25,
-                                ease: "linear",
-                            },
+                            duration: 30,
+                            repeat: Infinity,
+                            ease: "linear"
                         }}
                     >
-                        {allImages.map((src, idx) => (
+                        {[...phoneImages, ...phoneImages].map((src, idx) => (
                             <div
                                 key={idx}
                                 className="w-[260px] md:w-[320px] aspect-[9/19] rounded-[40px] overflow-hidden border-4 border-white/10 shadow-2xl hover:scale-105 transition-transform duration-500"
@@ -63,6 +61,19 @@ export const IncomeVision = () => {
                         ))}
                     </motion.div>
                 </div>
+
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    className="mt-2"
+                >
+                    <button
+                        onClick={onOpenPayment}
+                        className="inline-flex items-center justify-center gap-4 bg-secondary text-black font-black px-12 py-6 w-full max-w-[500px] rounded-2xl text-xl md:text-2xl shadow-[0_0_50px_rgba(250,204,21,0.3)] hover:scale-105 transition-all uppercase tracking-tight group"
+                    >
+                        ĐĂNG KÝ NGAY
+                    </button>
+                </motion.div>
 
                 <motion.p
                     initial={{ opacity: 0 }}

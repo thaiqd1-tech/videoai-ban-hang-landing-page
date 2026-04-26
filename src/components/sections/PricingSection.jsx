@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Gift, ShieldCheck, Zap, ChevronRight, MessageCircle } from 'lucide-react'
 
-export const PricingSection = () => {
+export const PricingSection = ({ onOpenPayment }) => {
   const [timeLeft, setTimeLeft] = useState(3600 * 24 + 3600 * 5)
 
   useEffect(() => {
@@ -68,13 +68,13 @@ export const PricingSection = () => {
                 </div>
               </div>
 
-              <a
-                href="/payment"
+              <button
+                onClick={onOpenPayment}
                 className="w-full max-w-md bg-secondary text-black font-black py-6 rounded-2xl text-xl md:text-2xl shadow-[0_0_50px_rgba(250,204,21,0.4)] hover:scale-105 hover:shadow-[0_0_60px_rgba(250,204,21,0.6)] transition-all flex items-center justify-center gap-4"
               >
                 MUA NGAY
                 <ChevronRight />
-              </a>
+              </button>
 
               <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center gap-6 pt-4">
                 <Feature icon={<Zap />} text={`Tăng giá sau: ${formatTime(timeLeft)}`} isRed />

@@ -55,7 +55,7 @@ const weapons = [
     }
 ]
 
-const TIMER_DURATION = 8000 // 8 seconds
+const TIMER_DURATION = 2000 // 8 seconds
 
 export const SecretWeaponSection = () => {
     const [activeIndex, setActiveIndex] = useState(0)
@@ -85,8 +85,12 @@ export const SecretWeaponSection = () => {
     }, [activeIndex])
 
     const handleSelect = (index) => {
-        setActiveIndex(index)
-        setProgress(0)
+        if (activeIndex === index) {
+            setActiveIndex(-1)
+        } else {
+            setActiveIndex(index)
+            setProgress(0)
+        }
     }
 
     return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useAnimationFrame } from 'framer-motion'
 
 const videoList = [
     { src: '/videos/Du lịch 1.mp4', aspect: 'aspect-video' },
@@ -10,6 +10,30 @@ const videoList = [
 ]
 
 export const AndromedaSystem = () => {
+    const x = useMotionValue(0)
+    const [isPaused, setIsPaused] = React.useState(false)
+    const containerRef = React.useRef(null)
+
+    // Speed of the scroll (pixels per frame)
+    const baseVelocity = -1 
+
+    useAnimationFrame((t, delta) => {
+        if (!isPaused) {
+            let moveBy = baseVelocity * (delta / 16) // Normalize by 60fps
+            x.set(x.get() + moveBy)
+
+            // Loop logic: If moved more than half the width (since we duplicated items), reset to 0
+            if (containerRef.current) {
+                const halfWidth = containerRef.current.scrollWidth / 3
+                if (x.get() <= -halfWidth) {
+                    x.set(0)
+                } else if (x.get() > 0) {
+                    x.set(-halfWidth)
+                }
+            }
+        }
+    })
+
     return (
         <section className="py-24 bg-black relative overflow-hidden">
             <div className="max-w-full relative z-10 text-center">
@@ -25,20 +49,20 @@ export const AndromedaSystem = () => {
                 {/* Auto-scrolling Video Slider */}
                 <div className="relative py-10 overflow-hidden">
                     {/* Gradient Fades */}
-                    <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black to-transparent z-10" />
-                    <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black to-transparent z-10" />
+                    <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black to-transparent z-20 pointer-events-none" />
+                    <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black to-transparent z-20 pointer-events-none" />
 
                     <motion.div
-                        className="flex gap-6 w-max"
-                        animate={{
-                            x: [0, -1800], 
-                        }}
-                        transition={{
-                            duration: 40,
-                            repeat: Infinity,
-                            ease: "linear"
-                        }}
+                        ref={containerRef}
+                        className="flex gap-6 w-max cursor-grab active:cursor-grabbing px-12"
+                        style={{ x }}
+                        onMouseEnter={() => setIsPaused(true)}
+                        onMouseLeave={() => setIsPaused(false)}
+                        drag="x"
+                        onDragStart={() => setIsPaused(true)}
+                        onDragEnd={() => setIsPaused(false)}
                     >
+                        {/* Triple the list to ensure seamless looping during drags */}
                         {[...videoList, ...videoList, ...videoList].map((video, i) => (
                             <div 
                                 key={i} 

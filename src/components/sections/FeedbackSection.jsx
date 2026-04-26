@@ -46,7 +46,7 @@ export const FeedbackSection = () => {
     const scroll = (direction) => {
         if (scrollRef.current) {
             const container = scrollRef.current
-            const firstItem = container.querySelector('.snap-center')
+            const firstItem = container.querySelector('.snap-start')
             if (firstItem) {
                 const itemWidth = firstItem.offsetWidth
                 const gap = 24 // tương đương với gap-6 (6 * 4px)
@@ -97,13 +97,13 @@ export const FeedbackSection = () => {
 
                     <div 
                         ref={scrollRef}
-                        className="flex gap-6 overflow-x-auto snap-x snap-mandatory hide-scroll-bar pb-8 md:px-[25%] lg:px-[35%]"
+                        className="flex gap-6 overflow-x-auto snap-x snap-mandatory hide-scroll-bar pb-8"
                         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                     >
                         {feedbacks.map((fb, i) => (
                             <motion.div
                                 key={i}
-                                className="min-w-[300px] md:min-w-[450px] snap-center bg-white/5 border border-white/10 p-8 rounded-[40px] relative group hover:bg-white/[0.08] transition-all duration-500"
+                                className="min-w-[85%] md:min-w-[calc(33.333%-16px)] snap-start bg-white/5 border border-white/10 p-8 rounded-[40px] relative group hover:bg-white/[0.08] transition-all duration-500"
                             >
                                 <Quote className="absolute top-6 right-8 text-secondary/10 w-16 h-16" />
                                 

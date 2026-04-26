@@ -20,7 +20,7 @@ export const ProblemSection = () => {
             <div className="max-w-6xl mx-auto px-4 relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="text-6xl md:text-7xl font-black mb-8">
-                        Bạn không <span className="text-primary text-glow-red uppercase italic mr-4">Cô Đơn</span>!
+                        Bạn không <span className="text-primary text-glow-red uppercase italic mr-4">Cô Đơn !!</span>
                     </h2>
                     <p className="text-gray-400 text-xl md:text-2xl max-w-6xl mx-auto leading-relaxed font-medium">
                         Tôi đã cố vấn hơn <span className="text-white font-bold">1000 học viên</span> là chủ doanh nghiệp, chủ xưởng, các<br className="hidden md:block" />

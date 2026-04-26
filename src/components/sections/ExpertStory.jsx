@@ -101,7 +101,7 @@ export const ExpertStory = () => {
                 <div className="pt-12 border-t border-white/5">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
                         <div className="relative">
-                            <div className="absolute inset-0 bg-secondary/20 blur-[100px] rounded-full" />
+                            <div className="absolute inset-0 bg-secondary/20 blur-[100px] rounded-full " />
                             <div className="relative z-10 p-4 border border-white/10 rounded-[40px] bg-gray-900/50 backdrop-blur-sm">
                                 <div className="aspect-[4/5] relative">
                                     <div className="absolute inset-0 bg-gray-800 rounded-[32px] overflow-hidden">
@@ -114,7 +114,19 @@ export const ExpertStory = () => {
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Community Badge Card */}
+                            <div className="mt-6 relative z-10 p-5 bg-gradient-to-r from-secondary/20 to-transparent border border-white/10 rounded-2xl flex items-center gap-4 backdrop-blur-md shadow-2xl">
+                                <div className="p-3 bg-secondary/20 rounded-xl shadow-[0_0_15px_rgba(250,204,21,0.2)]">
+                                    <Users className="text-secondary" size={28} />
+                                </div>
+                                <p className="text-white font-black text-lg md:text-xl leading-tight">
+                                    Admin 3 cộng đồng về làm video AI lớn nhất Việt Nam
+                                    với hơn <span className="text-secondary">300k thành viên</span>
+                                </p>
+                            </div>
                         </div>
+                        
 
                         <div className="space-y-10 pt-4">
                             <div>
@@ -127,23 +139,42 @@ export const ExpertStory = () => {
                                     <div className="mt-1 bg-secondary/10 p-2 rounded-lg">
                                         <Star size={20} className="text-secondary fill-secondary" />
                                     </div>
-                                    <p className="text-gray-300 text-lg">Chuyên gia cố vấn giải pháp AI cho doanh nghiệp</p>
+                                    <p className="text-gray-300 text-lg font-bold">Chuyên gia cố vấn giải pháp AI cho doanh nghiệp</p>
                                 </div>
 
                                 <div className="flex items-start gap-4">
                                     <div className="mt-1 bg-secondary/10 p-2 rounded-lg">
                                         <Users size={20} className="text-secondary" />
                                     </div>
-                                    <p className="text-gray-300 text-lg">Đã đào tạo 1000 học viên là chủ doanh nghiệp, chủ shop, cửa hàng.</p>
+                                    <p className="text-gray-300 text-lg font-bold">Đã đào tạo 1000+ học viên là chủ doanh nghiệp, chủ shop, cửa hàng.</p>
                                 </div>
 
                                 <div className="flex items-start gap-4">
                                     <div className="mt-1 bg-secondary/10 p-2 rounded-lg">
-                                        <BookOpen size={20} className="text-secondary" />
+                                        <CheckCircle2 size={20} className="text-secondary" />
                                     </div>
-                                    <div>
-                                        <p className="text-gray-300 text-lg font-bold">Sở hữu 3 cộng đồng về làm video AI với hơn 300k thành viên</p>
+                                    <p className="text-gray-300 text-lg font-bold">100% học viên làm được video bán hàng chỉ sau 2 ngày học</p>
+                                </div>
+
+                                <div className="flex items-start gap-4">
+                                    <div className="mt-1 bg-secondary/10 p-2 rounded-lg">
+                                        <TrendingUp size={20} className="text-secondary" />
                                     </div>
+                                    <p className="text-gray-300 text-lg font-bold">300+ học viên tạo ra nguồn thu nhập mới</p>
+                                </div>
+
+                                <div className="flex items-start gap-4">
+                                    <div className="mt-1 bg-secondary/10 p-2 rounded-lg">
+                                        <Users size={20} className="text-secondary" />
+                                    </div>
+                                    <p className="text-gray-300 text-lg font-bold">500+ học viên là chủ doanh nghiệp/ chủ shop áp dụng tăng &gt;50% hiệu quả</p>
+                                </div>
+
+                                <div className="flex items-start gap-4">
+                                    <div className="mt-1 bg-secondary/10 p-2 rounded-lg">
+                                        <CheckCircle2 size={20} className="text-secondary" />
+                                    </div>
+                                    <p className="text-gray-300 text-lg font-bold">1000+ học viên giảm chi phí sản xuất video &gt;85% áp dụng thành công</p>
                                 </div>
                             </div>
 
