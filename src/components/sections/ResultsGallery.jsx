@@ -109,6 +109,7 @@ export const ResultsGallery = () => {
                                         muted
                                         loop
                                         playsInline
+                                        preload="metadata"
                                         controls
                                     />
                                 </AnimatePresence>

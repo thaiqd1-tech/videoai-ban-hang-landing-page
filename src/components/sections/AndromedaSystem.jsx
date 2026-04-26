@@ -74,6 +74,7 @@ export const AndromedaSystem = () => {
                                     muted
                                     loop
                                     playsInline
+                                    preload="metadata"
                                     className="w-full h-full object-cover"
                                 />
                                 {/* Soft Inner Shadow */}
