@@ -15,6 +15,7 @@ export const PaymentModal = ({ isOpen, onClose }) => {
     const [isProcessing, setIsProcessing] = useState(false)
     const [formData, setFormData] = useState({ name: '', email: '', phone: '' })
     const [errors, setErrors] = useState({ name: '', email: '', phone: '' })
+    const [registerError, setRegisterError] = useState('')
 
     useEffect(() => {
         if (isOpen) {
@@ -32,6 +33,7 @@ export const PaymentModal = ({ isOpen, onClose }) => {
         setIsProcessing(false)
         setTimeLeft(15 * 60)
         setRegistrationData(null)
+        setRegisterError('')
     }
 
     const fetchCourses = async () => {
@@ -124,6 +126,7 @@ export const PaymentModal = ({ isOpen, onClose }) => {
     const handleInputChange = (e) => {
         const { name, value } = e.target
         setFormData(prev => ({ ...prev, [name]: value }))
+        setRegisterError('')
         validateField(name, value)
     }
 
@@ -135,6 +138,7 @@ export const PaymentModal = ({ isOpen, onClose }) => {
         if (!isNameValid || !isEmailValid || !isPhoneValid || !selectedCourse) return
 
         setIsProcessing(true)
+        setRegisterError('')
         try {
             const response = await fetch(`${API_BASE_URL}/api/landing/register`, {
                 method: 'POST',
@@ -142,7 +146,12 @@ export const PaymentModal = ({ isOpen, onClose }) => {
                 body: JSON.stringify({ ...formData, course_code: selectedCourse.course_code })
             })
             const result = await response.json()
-            if (result.success) {
+            if (response.status === 422 && result.message) {
+                setRegisterError(result.message)
+                return
+            }
+
+            if (response.ok && result.success === true && result.data?.qr_image_url) {
                 setRegistrationData(result.data)
                 setShowQR(true)
                 trackLead({ type: 'registration_initiated', ...formData, course: selectedCourse.title })
@@ -233,6 +242,12 @@ export const PaymentModal = ({ isOpen, onClose }) => {
                                         </div>
                                         <InputField label="Email (Nhận tài khoản)" name="email" value={formData.email} error={errors.email} onChange={handleInputChange} placeholder="email@gmail.com" />
                                     </div>
+
+                                    {registerError && (
+                                        <div className="rounded-2xl border border-red-500/30 bg-red-500/10 px-5 py-4 text-sm font-semibold leading-relaxed text-red-200">
+                                            {registerError}
+                                        </div>
+                                    )}
 
                                     <button
                                         onClick={handleRegister}

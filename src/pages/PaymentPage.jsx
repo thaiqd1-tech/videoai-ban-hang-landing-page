@@ -22,6 +22,7 @@ const PaymentPage = () => {
     email: '',
     phone: ''
   })
+  const [registerError, setRegisterError] = useState('')
 
   // Fetch courses on mount
   useEffect(() => {
@@ -168,6 +169,7 @@ const PaymentPage = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
+    setRegisterError('')
     validateField(name, value)
   }
 
@@ -175,6 +177,7 @@ const PaymentPage = () => {
     if (!isFormValid()) return
 
     setIsProcessing(true)
+    setRegisterError('')
     try {
       const response = await fetch(`${API_BASE_URL}/api/landing/register`, {
         method: 'POST',
@@ -188,7 +191,12 @@ const PaymentPage = () => {
         })
       })
       const result = await response.json()
-      if (result.success) {
+      if (response.status === 422 && result.message) {
+        setRegisterError(result.message)
+        return
+      }
+
+      if (response.ok && result.success === true && result.data?.qr_image_url) {
         setRegistrationData(result.data)
         setShowQR(true)
 
@@ -367,6 +375,11 @@ const PaymentPage = () => {
                     </div>
                   </form>
                 </div>
+                {registerError && (
+                  <div className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm font-semibold leading-relaxed text-red-200">
+                    {registerError}
+                  </div>
+                )}
                 <button
                   onClick={handleRegister}
                   disabled={!isFormValid() || isProcessing}
