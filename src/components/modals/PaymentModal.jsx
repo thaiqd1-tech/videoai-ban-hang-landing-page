@@ -108,6 +108,18 @@ export const PaymentModal = ({ isOpen, onClose }) => {
         if (window.fbq) {
             window.fbq('track', 'Purchase', { value, currency: 'VND', content_type: 'product' })
         }
+
+        // Meta Pixel #2 (ID: 2505881436497731) - fire on payment success
+        if (window.fbq) {
+            window.fbq('init', '2505881436497731')
+            window.fbq('trackSingle', '2505881436497731', 'PageView')
+            window.fbq('trackSingle', '2505881436497731', 'Purchase', {
+                value,
+                currency: 'VND',
+                content_type: 'product',
+                content_name: selectedCourse.title
+            })
+        }
     }
 
     const validateField = (name, value) => {
