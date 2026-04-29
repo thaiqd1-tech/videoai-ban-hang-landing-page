@@ -307,7 +307,7 @@ const PaymentPage = () => {
                   <div className="flex justify-between items-center mb-4">
                     <span className="text-gray-300">Giá gốc:</span>
                     <span className="line-through text-gray-400">
-                      3.999.000đ
+                      4.860.000đ
                     </span>
                   </div>
                   <div className="flex justify-between items-center mb-4">

@@ -231,7 +231,7 @@ export const PaymentModal = ({ isOpen, onClose }) => {
                                                 <span className="text-3xl font-black text-secondary">
                                                     {selectedCourse ? new Intl.NumberFormat('vi-VN').format(selectedCourse.current_price) : '0'}đ
                                                 </span>
-                                                <span className="text-gray-500 line-through mb-1 text-sm">3.999.000đ</span>
+                                                <span className="text-gray-500 line-through mb-1 text-sm">4.860.000đ</span>
                                             </div>
                                             <div className="mt-4 flex items-center gap-2 text-red-400 text-xs font-bold uppercase tracking-wider">
                                                 <AlertCircle size={14} />
