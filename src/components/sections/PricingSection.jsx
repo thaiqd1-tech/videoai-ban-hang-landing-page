@@ -55,10 +55,10 @@ export const PricingSection = ({ onOpenPayment }) => {
                 <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white ">
                   CHỈ CÒN
                   <span className="line-through text-red-500 text-glow-red text-2xl md:text-4xl block mt-4 opacity-80">
-                    4.860.000đ
+                    4.950.000đ
                   </span>
                   <span className="text-secondary text-glow-yellow text-6xl md:text-9xl block mt-2">
-                    486.000đ
+                    950.000đ
                   </span>
                 </h3>
                 <div className="bg-white/5 py-2 px-6 rounded-full inline-block">
