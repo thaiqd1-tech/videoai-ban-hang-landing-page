@@ -1,4 +1,4 @@
-﻿import React from 'react'
+import React from 'react'
 import { PhoneCall } from 'lucide-react'
 
 export const Support = () => {
@@ -8,7 +8,7 @@ export const Support = () => {
 
             <div className="max-w-3xl mx-auto px-4 relative z-10">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-5xl font-black text-white uppercase mb-4 leading-tight">
+                    <h2 className="text-3xl md:text-5xl font-black text-white uppercase mb-4 leading-[1.25] md:leading-[1.2]">
                         Tư vấn lộ trình học làm video AI <span className="text-secondary italic">Chuyên sâu</span>
                     </h2>
                 </div>
