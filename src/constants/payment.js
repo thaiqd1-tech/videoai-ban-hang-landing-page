@@ -5,5 +5,5 @@
   bankBin: '970432',
   originalAmount: 4950000,
   amount: 950000,
-  courseTitle: 'Khóa học UGC'
+  courseTitle: 'Khóa học video bán hàng 2026'
 }
