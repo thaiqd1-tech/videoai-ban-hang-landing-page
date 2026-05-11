@@ -107,3 +107,42 @@
         background-position: 100% 50%;
     }
 }
+
+@keyframes qrScanLine {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: calc(100% - 2px);
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+@keyframes qrScanGlow {
+    0% {
+        top: 0;
+        opacity: 0.35;
+    }
+
+    50% {
+        top: calc(100% - 4rem);
+        opacity: 0.75;
+    }
+
+    100% {
+        top: 0;
+        opacity: 0.35;
+    }
+}
+
+.qr-scan-line {
+    animation: qrScanLine 2.6s ease-in-out infinite;
+}
+
+.qr-scan-glow {
+    animation: qrScanGlow 2.6s ease-in-out infinite;
+}

@@ -129,8 +129,8 @@ export const PaymentContent = ({ onClose, isModal = false }) => {
   }
 
   return (
-    <div className={isModal ? 'rounded-[32px] border border-white/10 bg-[#050505] p-6 md:p-8' : 'rounded-[32px] border border-white/10 bg-[#050505] p-6 md:p-10'}>
-      <div className="mb-8 flex items-start justify-end gap-4">
+    <div className={isModal ? 'rounded-[28px] border border-white/10 bg-[#050505] p-4 sm:p-6 md:rounded-[32px] md:p-8' : 'rounded-[28px] border border-white/10 bg-[#050505] p-4 sm:p-6 md:rounded-[32px] md:p-10'}>
+      <div className="mb-5 flex items-start justify-end gap-4 sm:mb-8">
         {onClose && (
           <button onClick={onClose} className="rounded-full border border-white/10 p-3 text-gray-400 transition hover:border-white/20 hover:text-white">
             <X size={22} />
@@ -173,38 +173,35 @@ export const PaymentContent = ({ onClose, isModal = false }) => {
           </button>
         </div>
       ) : (
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="space-y-8 text-center">
-          <div className="space-y-4 text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-secondary/20 bg-secondary/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-secondary">
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="space-y-6 text-center sm:space-y-8">
+          <div className="space-y-3 text-center sm:space-y-4">
+            <div className="inline-flex items-center gap-2 rounded-full border border-secondary/20 bg-secondary/10 px-3 py-2 text-[10px] font-black uppercase tracking-[0.24em] text-secondary sm:px-4 sm:tracking-[0.3em]">
               <CheckCircle2 size={14} />
               Sẵn sàng thanh toán
             </div>
-            <h3 className="text-3xl font-black text-white md:text-5xl">Quét mã QR để chuyển khoản</h3>
+            <h3 className="text-2xl font-black leading-tight text-white sm:text-3xl md:text-5xl">Quét mã QR để chuyển khoản</h3>
           </div>
 
-          <div className="mx-auto grid max-w-5xl items-stretch gap-8 lg:grid-cols-2">
-            <div className="flex min-h-[360px] items-center justify-center rounded-[28px] border border-white/10 bg-white/[0.03] p-6 md:min-h-[420px]">
-              <div className="rounded-[32px] bg-white p-5 shadow-2xl">
-                <img src={qrDataUrl} alt="Mã VietQR thanh toán" className="h-56 w-56 md:h-72 md:w-72" />
-              </div>
+          <div className="mx-auto grid max-w-5xl items-stretch gap-5 sm:gap-6 lg:grid-cols-2 lg:gap-8">
+            <div className="flex min-h-[300px] items-center justify-center rounded-[24px] border border-white/10 bg-white/[0.03] p-4 sm:min-h-[360px] sm:p-6 md:min-h-[420px]">
+              <QrPreviewCard qrDataUrl={qrDataUrl} />
             </div>
-            <div className="flex min-h-[360px] items-center md:min-h-[420px]">
-              <div className="w-full rounded-[28px] border border-white/10 bg-white/[0.03] p-5">
+            <div className="flex min-h-[300px] items-center sm:min-h-[360px] md:min-h-[420px]">
+              <div className="w-full rounded-[24px] border border-white/10 bg-white/[0.03] p-4 text-left sm:p-5">
                 <InfoRow label="Chủ tài khoản" value={PAYMENT_CONFIG.accountName} />
                 <InfoRow label="Số tài khoản" value={PAYMENT_CONFIG.accountNumber} />
                 <InfoRow label="Ngân hàng" value={PAYMENT_CONFIG.bankName} />
-                <InfoRow label="Giá gốc" value={`${formattedOriginalAmount}đ`} />
                 <InfoRow label="Số tiền" value={`${formattedAmount}đ`} />
                 <div className="border-t border-white/10 pt-3">
                   <p className="mb-2 text-[10px] font-black uppercase tracking-[0.3em] text-gray-500">Nội dung chuyển khoản</p>
-                  <p className="break-words text-base font-black text-secondary">{transferContent}</p>
+                  <p className="break-all text-sm font-black text-secondary sm:break-words sm:text-base">{transferContent}</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col items-center justify-center gap-4 border-t border-white/5 pt-5 md:flex-row">
-            <div className="flex items-center gap-2 font-bold text-red-400">
+          <div className="flex flex-col items-center justify-center gap-3 border-t border-white/5 pt-5 sm:gap-4 md:flex-row">
+            <div className="flex items-center gap-2 text-center font-bold text-red-400">
               <Timer size={18} />
               <span>Mã làm mới sau: {formatTime(timeLeft)}</span>
             </div>
@@ -225,15 +222,26 @@ const InputField = ({ label, name, value, error, onChange, placeholder }) => (
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      className={`w-full rounded-2xl border ${error ? 'border-red-500/50' : 'border-white/10'} bg-white/[0.03] px-6 py-4 text-white placeholder:text-gray-700 transition-all focus:border-secondary/50 focus:bg-white/[0.05] focus:outline-none`}
+      className={`w-full rounded-2xl border ${error ? 'border-red-500/50' : 'border-white/10'} bg-white/[0.03] px-4 py-3.5 text-base text-white placeholder:text-gray-700 transition-all focus:border-secondary/50 focus:bg-white/[0.05] focus:outline-none sm:px-6 sm:py-4`}
     />
     {error && <p className="ml-2 text-[10px] font-bold uppercase tracking-tighter text-red-500">{error}</p>}
   </div>
 )
 
+const QrPreviewCard = ({ qrDataUrl }) => (
+  <div className="relative overflow-hidden rounded-[28px] bg-white p-4 shadow-2xl sm:p-5">
+    <div className="relative h-56 w-56 sm:h-64 sm:w-64 md:h-72 md:w-72">
+      <img src={qrDataUrl} alt="Mã VietQR thanh toán" className="relative z-10 h-full w-full" />
+      <div className="pointer-events-none absolute inset-0 z-20 rounded-[20px] border border-emerald-500/20" />
+      <div aria-hidden="true" className="qr-scan-glow pointer-events-none absolute inset-x-0 top-0 z-30 h-16 rounded-full bg-gradient-to-b from-emerald-400/0 via-emerald-400/35 to-emerald-400/0 blur-md" />
+      <div aria-hidden="true" className="qr-scan-line pointer-events-none absolute inset-x-1 top-0 z-40 h-[2px] bg-emerald-400 shadow-[0_0_18px_rgba(52,211,153,0.95)]" />
+    </div>
+  </div>
+)
+
 const InfoRow = ({ label, value }) => (
-  <div className="flex items-start justify-between gap-4 border-b border-white/5 pb-3 text-sm">
+  <div className="flex flex-col items-start gap-1 border-b border-white/5 pb-3 text-sm sm:flex-row sm:items-start sm:justify-between sm:gap-4">
     <span className="text-gray-500">{label}</span>
-    <span className="text-right font-bold text-white">{value}</span>
+    <span className="text-left font-bold text-white sm:text-right">{value}</span>
   </div>
 )
